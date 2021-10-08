@@ -44,3 +44,79 @@ namespace Kolcsonzo
 				Console.Write(flotta[i].getBerelheto() + " ; ");
 				Console.WriteLine(flotta[i].getKategoria());
 			}
+
+			
+
+		}
+
+		public static KolcsonozhetoAuto randomUjAuto(int seed)
+		{
+
+			Random gen = new Random(seed);
+
+			string[] gyartok = {
+				"Maserati",
+				"Jeep",
+				"Ferrari",
+				"Suzuki",
+				"Volvo",
+				"Lada"
+			};
+
+
+			char[] abc = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+							'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+							'X', 'Y', 'Z'};
+
+			string abcS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+			string rszam = "";
+
+			for (int i = 0; i < 3; i++)
+			{
+
+				rszam += abcS[gen.Next(0, abcS.Length)];
+			}
+
+			rszam = rszam + "-";
+
+			for (int i = 0; i < 3; i++)
+			{
+
+				rszam += gen.Next(0, 10).ToString();
+			}
+
+
+			string marka = gyartok[gen.Next(0, gyartok.Length)];
+			int ev = gen.Next(1995, 2022);
+			int utasok = gen.Next(2, 10);
+			int tartaly = gen.Next(20, 71);
+			double lpkm = 5.5 + (11 * gen.NextDouble());
+			char kat = abc[gen.Next(0, 3)];
+
+			KolcsonozhetoAuto auto =
+				new KolcsonozhetoAuto(rszam, marka, ev, utasok, tartaly, lpkm, kat);
+
+			return auto;
+		}
+
+		public KolcsonozhetoAuto randomHasznaltAuto()
+        {
+			KolcsonozhetoAuto auto = randomUjAuto(1);
+            {
+				if(auto.getGyartasEve() ==2021)
+                {
+					auto.setGyartasiIdo(auto.getGyartasEve() -4);
+                }
+
+				auto.setMegtettKm(362000);
+
+
+				return auto;
+            }
+
+        }
+
+	}
+
+}
