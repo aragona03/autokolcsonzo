@@ -75,6 +75,7 @@ namespace Kolcsonzo {
 
         public void setBerelheto(bool szabad) { berelheto = szabad; }
       
+        public void setGyartasiIdo(int ev) { gyartasEve = ev;  }
 
 
 		/*
