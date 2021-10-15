@@ -33,7 +33,7 @@ namespace Kolcsonzo
 			flotta[5] = randomHasznaltAuto(5);
 			flotta[6] = randomHasznaltAuto(6);
 
-
+			flotta[7] = adatBekeres();  
 
 			for (int i = 0; i <= 6; i++)
 			{
@@ -126,6 +126,115 @@ namespace Kolcsonzo
         {
 			/*string rszam, string marka, int ev, int utasok, int tartaly, double lpkm, char kat*/
 
+			//rendszám ellenőrzés
+			string rszam;
+			bool joe = false;
+			string ujrszam;
+			do
+			{
+				do
+				{
+					Console.WriteLine("Add meg az autó rendszámát: ");
+					Console.WriteLine("A rendszám formátuma: ABC-123");
+
+					rszam = Console.ReadLine();
+				} while (rszam.Length < 7);
+
+				
+				ujrszam = rszam.Substring(0, 3).ToUpper() + rszam.Substring(3, 4);
+
+				int i = 0;
+				while (ujrszam[i] >= 'A' && ujrszam[i] <= 'Z');
+                {
+					i++;
+
+                }
+
+				if (i >= 3) joe = true;
+
+				if (ujrszam[3] != '-') joe = false;
+
+				i = 4;
+				while (ujrszam[i] >= '0' && ujrszam[i] <= '9') ;
+				{
+					i++;
+				}
+
+				if (i >= 7) joe = true;
+
+
+			} while (joe);
+
+
+			//gyártási év bekérése
+			int gyev = 0;
+			do
+			{
+				Console.WriteLine("Add meg az autó gyártási évét:");
+				gyev = Convert.ToInt32(Console.ReadLine());
+
+			} while (1999 > gyev || gyev >= 2021);
+
+			//utasok száma
+			int utsz = 0;
+			do
+			{
+
+				Console.WriteLine("Add meg az utasok számát: ");
+				utsz = Convert.ToInt32(Console.ReadLine());
+
+
+			} while (1 > utsz || utsz >= 11);
+
+			//tartály mérete
+			int urt = 0;
+			do
+			{
+
+				Console.WriteLine("Add meg a tank űrtartalmát: ");
+				urt = Convert.ToInt32(Console.ReadLine());
+
+
+			} while (28 > urt || urt >=85);
+
+			//fogyasztás 100km-en
+			double fogy = 0;
+			do
+			{
+
+				Console.WriteLine("Add meg az autó fogyasztását 100km-en: ");
+				fogy = Convert.ToDouble(Console.ReadLine());
+
+
+			} while (3.8 > fogy || fogy >= 60.4);
+
+			//kategória bekérése
+			char kat = 'Z';
+			do
+			{
+
+				Console.WriteLine("Add meg az autó kategóriáját: ");
+				Console.WriteLine("Lehetséges érték: A; B; C");
+
+				kat = (Console.ReadLine().ToUpper())[0];
+
+
+			} while (kat !='A' && kat !='B' && kat !='C');
+
+			//márka bekérés
+			string gyarto;
+			do
+			{
+
+				Console.WriteLine("Add meg az autó gyártóját: ");
+				gyarto = Console.ReadLine();
+
+			} while (gyarto.Length < 3);
+
+
+			KolcsonozhetoAuto auto = new KolcsonozhetoAuto(ujrszam, gyarto , gyev , utsz , urt , fogy , kat );
+
+			return auto;
 
 
 		}
