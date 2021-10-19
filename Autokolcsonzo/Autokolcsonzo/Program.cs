@@ -35,7 +35,9 @@ namespace Kolcsonzo
 
 			flotta[7] = adatBekeres();  
 
-			for (int i = 0; i <= 6; i++)
+
+
+			for (int i = 0; i <= 8; i++)
 			{
 
 				Console.Write(flotta[i].getRendszam() + " ; ");
@@ -50,7 +52,10 @@ namespace Kolcsonzo
 			}
 			Console.ReadKey();
 
-			
+            for (int i = 0; i < 8; i++)
+            {
+				flotta[i].kategoriaBeallitas();
+            }
 
 		}
 

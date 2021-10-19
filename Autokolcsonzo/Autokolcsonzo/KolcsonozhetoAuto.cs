@@ -4,9 +4,9 @@ using System;
 
 namespace Kolcsonzo {
 
-	public class KolcsonozhetoAuto {
+    public class KolcsonozhetoAuto {
 
-		/*
+        /*
   		 * tagváltozók
          */
         private string rendszam;            //RO
@@ -19,12 +19,12 @@ namespace Kolcsonzo {
         private int megtettKm;              //RW
         private bool berelheto;             //RW
         private char kategoria;             //RW
-  
 
-		/*
+
+        /*
          * Konstruktorok
          */
-		public KolcsonozhetoAuto() { }
+        public KolcsonozhetoAuto() { }
 
         //új autó
         public KolcsonozhetoAuto(string rszam, string marka, int ev,
@@ -44,26 +44,26 @@ namespace Kolcsonzo {
         }
 
 
-		/*
+        /*
          * Getter-setter metódusok
          */
-        public string getRendszam() { return rendszam;}
+        public string getRendszam() { return rendszam; }
 
-        public string getGyarto() { return gyarto;}
+        public string getGyarto() { return gyarto; }
 
-        public int getGyartasEve() { return gyartasEve;}
+        public int getGyartasEve() { return gyartasEve; }
 
-        public int getUtasSzam() { return utasSzam;}
+        public int getUtasSzam() { return utasSzam; }
 
-        public double getuzemanyagMennyiseg() { return uzemanyagMennyiseg;}
+        public double getuzemanyagMennyiseg() { return uzemanyagMennyiseg; }
 
-        public double getFogyasztas() { return fogyasztas;}
+        public double getFogyasztas() { return fogyasztas; }
 
-        public int getMegtettKm() { return megtettKm;}
+        public int getMegtettKm() { return megtettKm; }
 
-        public bool getBerelheto() { return berelheto;}
+        public bool getBerelheto() { return berelheto; }
 
-        public char getKategoria() { return kategoria;}
+        public char getKategoria() { return kategoria; }
 
 
 
@@ -74,15 +74,35 @@ namespace Kolcsonzo {
         public void setMegtettKm(int km) { megtettKm = km; }
 
         public void setBerelheto(bool szabad) { berelheto = szabad; }
-      
-        public void setGyartasiIdo(int ev) { gyartasEve = ev;  }
+
+        public void setGyartasiIdo(int ev) { gyartasEve = ev; }
 
 
-		/*
+        /*
          * tagfüggvények
          */
 
-		//KATEGÓRIA beállítás
+        //KATEGÓRIA beállítás
+
+        public void kategoriaBeallitas()
+        {
+            int eletko = DateTime.Now.Year - gyartasEve;
+
+            if(eletko <= 3)
+            {
+                kategoria = 'A';
+            }
+            else if(eletko <= 10)
+            {
+                kategoria = 'B';
+            }
+            else
+            {
+                kategoria = 'C';
+            }
+        }
+        
+
 
 
 
